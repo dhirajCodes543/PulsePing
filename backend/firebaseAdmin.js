@@ -3,7 +3,7 @@ import fs from "fs";
 
 
 const serviceAccount = JSON.parse(
-  fs.readFileSync("./pulsepingadmin.json", "utf-8")
+  fs.readFileSync("/etc/secrets/pulsepingadmin.json", "utf-8")
 );
 
 admin.initializeApp({
