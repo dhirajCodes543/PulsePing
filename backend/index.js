@@ -15,7 +15,7 @@ const PORT = 9000;
 let monitorCronJob
 
 mongoose
-  .connect("mongodb+srv://d4dhirajbarnwal:JQ9GZgNhOzfl4mnr@cluster0.p1bpm2q.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+  .connect(process.env.MONGO_DB)
   .then(() => {
     console.log("MongoDB connected");
     app.listen(PORT, () => {
