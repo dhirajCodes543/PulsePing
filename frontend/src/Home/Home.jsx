@@ -45,7 +45,7 @@ const Homepage = () => {
         const token = await currentUser.getIdToken(true);
         setUrl(url.trim());
         try {
-            const res = await axios.post("/api/url/ping-api",
+            const res = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/url/ping-api`,
                 { url },
                 { headers: { Authorization: `Bearer ${token}` } },
             )

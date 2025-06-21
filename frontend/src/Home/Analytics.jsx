@@ -21,7 +21,7 @@ const URLMonitoringDashboard = () => {
                 setLoading(true);
                 setError(null);
                 const token = await user.getIdToken();
-                const res = await fetch("/api/users/analytics", {
+                const res = await fetch(`${import.meta.env.VITE_BASE_URL}/api/users/analytics`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 const data = await res.json();

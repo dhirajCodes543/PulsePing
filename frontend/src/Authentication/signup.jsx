@@ -56,7 +56,7 @@ export default function SignupPage() {
 
       try {
         
-        const res = await axios.post("/api/user/signup",
+        const res = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/user/signup`,
           {},
           { headers : { Authorization: `Bearer ${token}` } }
         )
