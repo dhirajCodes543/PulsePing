@@ -15,7 +15,7 @@ const PORT = 9000;
 let monitorCronJob
 
 mongoose
-  .connect("mongodb://localhost:27017/PulsePing")
+  .connect("mongodb+srv://d4dhirajbarnwal:JQ9GZgNhOzfl4mnr@cluster0.p1bpm2q.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
   .then(() => {
     console.log("MongoDB connected");
     app.listen(PORT, () => {
