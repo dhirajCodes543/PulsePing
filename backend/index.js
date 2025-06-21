@@ -37,9 +37,9 @@ mongoose
 
 app.use(express.json());
 
+app.get("/api/ping", (req, res) => res.json({ ok: true }));
 app.use(authenticateFirebaseToken);
 
-app.get("/api/ping", (req, res) => res.json({ ok: true }));
 app.use("/api/user",userRouter);
 app.use("/api/users",userUrlRouter);
 app.use("/api/url",urlRouter);
