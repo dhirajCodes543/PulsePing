@@ -4,6 +4,7 @@ import authenticateFirebaseToken from "./middlewares/authMiddleware.js";
 import userRouter from "./routers/signup.js";
 import urlRouter from "./routers/url.js";
 import cron from "node-cron"
+import cors from 'cors'
 import { checkAllUrl } from "./service/urlMoniter.js";
 import userUrlRouter from "./routers/userUrl.js"
 import dotenv from 'dotenv';
