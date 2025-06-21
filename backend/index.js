@@ -1,6 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
-import authenticateFirebaseToken from "./middlewares/authmiddleware.js";
+import authenticateFirebaseToken from "./middlewares/authMiddleware.js";
 import userRouter from "./routers/signup.js";
 import urlRouter from "./routers/url.js";
 import cron from  "node-cron"
@@ -39,6 +39,7 @@ app.use(express.json());
 
 app.use(authenticateFirebaseToken);
 
+app.get("/api/ping", (req, res) => res.json({ ok: true }));
 app.use("/api/user",userRouter);
 app.use("/api/users",userUrlRouter);
 app.use("/api/url",urlRouter);
