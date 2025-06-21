@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import authenticateFirebaseToken from "./middlewares/authMiddleware.js";
 import userRouter from "./routers/signup.js";
 import urlRouter from "./routers/url.js";
-import cron from  "node-cron"
+import cron from "node-cron"
 import { checkAllUrl } from "./service/urlMoniter.js";
 import userUrlRouter from "./routers/userUrl.js"
 import dotenv from 'dotenv';
@@ -22,7 +22,7 @@ mongoose
       console.log(`🚀 Server running on http://localhost:${PORT}`);
     });
 
-    monitorCronJob=cron.schedule("*/5 * * * *", async () => {
+    monitorCronJob = cron.schedule("*/5 * * * *", async () => {
       try {
         await checkAllUrl();      // make sure the name matches your import
       } catch (err) {
@@ -34,22 +34,26 @@ mongoose
     console.error("MongoDB connection failed:", err.message);
   });
 
+app.use(cors({
+  origin: 'https://pulseping.netlify.app',
+  credentials: true, // if you're using cookies/auth
+}));
 
 app.use(express.json());
 
 app.get("/api/ping", (req, res) => res.json({ ok: true }));
 app.use(authenticateFirebaseToken);
 
-app.use("/api/user",userRouter);
-app.use("/api/users",userUrlRouter);
-app.use("/api/url",urlRouter);
+app.use("/api/user", userRouter);
+app.use("/api/users", userUrlRouter);
+app.use("/api/url", urlRouter);
 
 process.on("SIGINT", async () => {
   console.log("\n🛑 Caught SIGINT (Ctrl+C). Cleaning up...");
 
   try {
-    if(monitorCronJob){
-    monitorCronJob.stop();
+    if (monitorCronJob) {
+      monitorCronJob.stop();
     }
     console.log(" Cron job stopped.");
 
@@ -59,5 +63,5 @@ process.on("SIGINT", async () => {
     console.error("Error during shutdown:", err.message);
   }
 
-  process.exit(0); 
+  process.exit(0);
 });
