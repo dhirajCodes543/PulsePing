@@ -22,7 +22,7 @@ mongoose
       console.log(`🚀 Server running on http://localhost:${PORT}`);
     });
 
-    monitorCronJob=cron.schedule("*/1 * * * *", async () => {
+    monitorCronJob=cron.schedule("*/5 * * * *", async () => {
       try {
         await checkAllUrl();      // make sure the name matches your import
       } catch (err) {
