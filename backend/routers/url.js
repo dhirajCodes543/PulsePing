@@ -9,11 +9,9 @@ router.post("/ping-api", async (req, res) => {
         return res.status(403).json({ ERROR: "url missing" });
     }
     if (!req.user) {
-        console.log(req);
         return res.json({ error: "User missing" });
     }
     const firebaseUid = req?.user.uid;
-    console.log(firebaseUid);
     
     let user = await USER.findOne({ firebaseUid });
     if (!user) {
@@ -36,11 +34,10 @@ router.post("/ping-api", async (req, res) => {
             responseTime:null
         })
 
-        console.log("Url Data", urlData);
         res.status(201).json(urlData);
 
     } catch (error) {
-        console.error('Add-URL error →', error.message);
+        console.error('Add-URL error ', error.message);
         res.status(400).json({ error: error.message });
     }
 })

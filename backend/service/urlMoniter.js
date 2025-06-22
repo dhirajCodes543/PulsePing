@@ -7,10 +7,8 @@ import pLimit from 'p-limit'
 const limit = pLimit(50);
 
 const checkUrl = async (urlDoc) => {
-     console.log('User ID:', urlDoc.userId?._id);
-    console.log('User Email:', urlDoc.userId?.email);
     const previousStatus = urlDoc.status;
-    console.log(`🔍 Starting check for ${urlDoc.url} at ${new Date().toISOString()}`);
+
     try {
         const start = Date.now();
         await Promise.race([
@@ -20,20 +18,18 @@ const checkUrl = async (urlDoc) => {
             )
         ]);
         const end = Date.now();
-        console.log(`📡 HTTP request completed in ${end - start}ms`);
 
         urlDoc.status = "up";
         urlDoc.responseTime = end - start;
     } catch (error) {
         urlDoc.status = "down";
         urlDoc.responseTime = null;
-        console.error(`❌ ${urlDoc.url} failed:`, error.code || error.message);
+        console.error(` ${urlDoc.url} failed:`, error.code || error.message);
     }
 
     urlDoc.lastChecked = new Date();
-    console.log(`💾 About to save to database at ${new Date().toISOString()}`);
     await urlDoc.save();
-    console.log(`✅ Database save completed at ${new Date().toISOString()}`);
+    
     if (
         previousStatus !== "down" && urlDoc.status === "down" && urlDoc.userId?.email
     ) {

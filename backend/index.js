@@ -20,12 +20,12 @@ mongoose
   .then(() => {
     console.log("MongoDB connected");
     app.listen(PORT, () => {
-      console.log(`🚀 Server running on http://localhost:${PORT}`);
+      console.log(`🚀 Server running`);
     });
 
     monitorCronJob = cron.schedule("*/5 * * * *", async () => {
       try {
-        await checkAllUrl();      // make sure the name matches your import
+        await checkAllUrl();      
       } catch (err) {
         console.error("Cron job error:", err.message);
       }
@@ -37,7 +37,7 @@ mongoose
 
 app.use(cors({
   origin: 'https://pulseping.netlify.app',
-  credentials: true, // if you're using cookies/auth
+  credentials: true, 
 }));
 
 app.use(express.json());

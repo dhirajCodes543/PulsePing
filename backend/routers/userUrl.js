@@ -6,11 +6,9 @@ const router = Router();
 
 router.get("/analytics", async (req, res) => {
     if (!req.user) {
-        console.log(req);
         return res.json({ error: "User missing" });
     }
     const firebaseUid = req?.user.uid;
-    console.log(firebaseUid);
     
     let user = await USER.findOne({ firebaseUid });
     if (!user) {
@@ -22,8 +20,6 @@ router.get("/analytics", async (req, res) => {
         const urls = await URL.find({ userId: user._id })
             .sort({ createdAt: -1 })
 
-            console.log(urls);
-            
 
         return res.json({ urls })
 

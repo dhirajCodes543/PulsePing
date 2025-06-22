@@ -6,7 +6,6 @@ const router = Router();
 
 router.post("/signup", async (req, res) => {
     if (!req.user) {
-        console.log(req);
         return res.status(400).json({ error: "User missing" });
     }
     const firebaseUid = req.user.uid;
@@ -18,7 +17,6 @@ router.post("/signup", async (req, res) => {
             email: firebaseUser.email,
         })
 
-        console.log(newUser);
         res.status(201).json({ message: "User Created,", user: newUser })
 
     } catch (error) {

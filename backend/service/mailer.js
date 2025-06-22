@@ -6,15 +6,15 @@ const transporter = nodemailer.createTransport({
   host: "smtp-relay.brevo.com",
   port: 587,
   auth: {
-    user: "90356d001@smtp-brevo.com", // Your Brevo login
-    pass: process.env.SMTP_PASS        // Your Master password (SMTP key)
+    user: "90356d001@smtp-brevo.com", 
+    pass: process.env.SMTP_PASS      
   }
 });
 
 export const sendAlertEmail = async (to, subject, message) => {
   try {
     const info = await transporter.sendMail({
-      from: '"Pulse Ping" <dhiraj99909@gmail.com>', // Must be verified in Brevo
+      from: '"Pulse Ping" <dhiraj99909@gmail.com>', 
       to,
       subject,
       text: message
