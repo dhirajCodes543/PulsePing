@@ -55,7 +55,7 @@ export default function EmailVerificationPage() {
     try {
       await sendEmailVerification(user);
       setSuccess('Verification email sent successfully!');
-      setCountdown(60); // 60 seconds cooldown
+      setCountdown(60); 
     } catch (err) {
       setError('Failed to send verification email. Please try again.');
       console.error(err);

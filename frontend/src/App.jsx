@@ -44,9 +44,9 @@ function App() {
   }
   return (
     <BrowserRouter>
-      <Toaster position="top-right" reverseOrder={false}       /* 1️⃣ the single speaker */
+      <Toaster position="top-right" reverseOrder={false}      
         toastOptions={{
-          style: { background: "#18181b", color: "#fff" },     /* optional dark‑violet look */
+          style: { background: "#18181b", color: "#fff" },    
           success: {
             iconTheme: { primary: "#8b5cf6", secondary: "#fff" }
           },

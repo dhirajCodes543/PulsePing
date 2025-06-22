@@ -42,7 +42,7 @@ const URLMonitoringDashboard = () => {
 
     return (
         <div className="min-h-screen bg-gray-900 text-white relative">
-            {/* ── Home button (left) */}
+            
             <Link
                 to="/"
                 className="fixed top-6 left-6 inline-flex items-center space-x-2
@@ -51,7 +51,7 @@ const URLMonitoringDashboard = () => {
                 <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform duration-200" />
                 <span className="font-medium">Home</span>
             </Link>
-            {/* ── Service‑Live badge (right) */}
+            
             <div className="fixed top-6 right-6 z-50 select-none">
                 <div className="flex items-center space-x-2 bg-gray-800/90 backdrop-blur px-4 py-2 rounded-full border border-green-500/30">
                     <div className="relative">
@@ -63,7 +63,7 @@ const URLMonitoringDashboard = () => {
                 </div>
             </div>
 
-            {/* ── Main centred content */}
+            
             <main className="w-full max-w-4xl mx-auto pt-24 px-4 md:px-6">
                 <header className="text-center mb-10">
                     <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r pb-2 from-violet-400 to-purple-400 bg-clip-text text-transparent mb-2">
@@ -72,7 +72,7 @@ const URLMonitoringDashboard = () => {
                     <p className="text-gray-400 text-lg">Monitor up to 10 APIs with real-time status tracking.</p>
                 </header>
 
-                {/* Render states */}
+            
                 {loading ? (
                     <div className="flex flex-col items-center min-h-80">
                         <Loader2 className="w-12 h-12 text-violet-400 animate-spin mb-4" />
