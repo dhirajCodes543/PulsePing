@@ -24,7 +24,6 @@ const checkUrl = async (urlDoc) => {
     } catch (error) {
         urlDoc.status = "down";
         urlDoc.responseTime = null;
-        console.error(` ${urlDoc.url} failed:`, error.code || error.message);
     }
 
     urlDoc.lastChecked = new Date();
