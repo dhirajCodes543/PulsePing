@@ -50,7 +50,7 @@ export async function checkAllUrl() {
         const urls = await URL.find().populate("userId", "email");
         const tasks = urls.map((url) => limit(() => checkUrl(url)));
         await Promise.allSettled(tasks);
-        console.log(`[${new Date().toLocaleTimeString()}] Checked ${urls.length} URLs`);
+        // console.log(`[${new Date().toLocaleTimeString()}] Checked ${urls.length} URLs`);
     } catch (error) {
         console.error("🚨 Error checking URLs:", error.message);
     }
