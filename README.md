@@ -45,4 +45,4 @@ It pings your added URLs every few minutes and alerts you if any service goes do
 
 🧑‍💻 Made with ❤️ by Dhiraj Barnwal  
 🔗 GitHub: https://github.com/dhirajbarnwal  
-🔗 LinkedIn: https://linkedin.com/in/dhirajbarnwal  
+🔗 LinkedIn: https://www.linkedin.com/in/dhirajbarnwal12
