@@ -29,10 +29,11 @@ const Homepage = () => {
 
     useEffect(() => {
         if (!canUseService && !sessionStorage.getItem("reloadedOnce")) {
-            sessionStorage.setItem("reloadedOnce", "true"); 
-            window.location.reload();                       
+            sessionStorage.setItem("reloadedOnce", "true");
+            window.location.reload();
         }
     }, [canUseService]);
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -77,29 +78,35 @@ const Homepage = () => {
         }
         return '';
     };
-
+    const analytics = () => {
+        if (!isLoggedIn && isVerified){
+            toast.error("Please Login first");
+            return;
+        }
+        navigate("/analytics");
+    }
     return (
         <div className="min-h-screen bg-gray-900 text-white flex flex-col">
             <header className="p-4 lg:p-6 flex items-center justify-between border-b border-gray-800/50 bg-gray-900/50 backdrop-blur-sm">
-            
+
                 <div className="flex items-center space-x-3 select-none">
                     <h1 className="text-2xl font-extrabold bg-gradient-to-r from-violet-400 to-purple-400 bg-clip-text text-transparent">
                         PulsePing
                     </h1>
                 </div>
 
-                
+
                 <div className="flex items-center space-x-4">
-                    
-                    <Link
-                        to="/analytics"
+
+                    <button
+                        onClick={analytics}
                         className="flex items-center space-x-2 text-gray-300 hover:text-violet-400 transition-colors"
                     >
                         <BarChart3 size={18} />
                         <span className="hidden sm:inline text-sm font-medium">Analytics</span>
-                    </Link>
+                    </button>
 
-                    
+
                     <div
                         className="hidden sm:flex items-center space-x-2 px-3 py-1.5 rounded-full text-xs font-medium border"
                         style={{
@@ -117,10 +124,10 @@ const Homepage = () => {
                 </div>
             </header>
 
-            
+
             <main className="flex-1 flex items-center justify-center p-6">
                 <div className="w-full max-w-2xl">
-            
+
                     {!canUseService && (
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
@@ -150,7 +157,7 @@ const Homepage = () => {
                         </motion.div>
                     )}
 
-            
+
                     <AnimatePresence>
                         {showSuccess && (
                             <motion.div
@@ -178,7 +185,7 @@ const Homepage = () => {
                         )}
                     </AnimatePresence>
 
-            
+
                     <motion.div
                         className="space-y-8"
                         initial={{ opacity: 0, y: 30 }}
@@ -228,7 +235,7 @@ const Homepage = () => {
                                 </button>
                             </form>
 
-            
+
                             <div className="sm:hidden">
                                 <div
                                     className={`p-4 rounded-xl border ${canUseService
