@@ -79,7 +79,7 @@ const Homepage = () => {
         return '';
     };
     const analytics = () => {
-        if (!isLoggedIn && isVerified){
+        if (!isLoggedIn && !isVerified){
             toast.error("Please Login first");
             return;
         }
